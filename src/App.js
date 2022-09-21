@@ -1,23 +1,21 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Header from './Components/Header';
+import ProductDetails from './Components/ProductDetails';
 
 function App() {
+  const [overflow, setOverflow] = useState(false)
+  const [inCart, setInCart] = useState([])
+
+  console.log(inCart)
+
+  console.log(overflow)
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={`${overflow ? 'h-screen overflow-y-hidden' : ''} App `}>
+    <Header inCart={inCart} setInCart={setInCart}/>
+    <ProductDetails overflow={setOverflow} inCart={inCart} setInCart={setInCart}/>
     </div>
   );
 }
